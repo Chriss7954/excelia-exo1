@@ -54,7 +54,7 @@ jobs:
         - name: Virtual pytest creation
           run: |
             pip install pytest
-            python -m pytest --doctest_modules --ignore=main.py --cov
+            python -m pytest --doctest-modules --ignore=main.py --cov
   deploy:
     needs: test
     runs-on: ubuntu-latest
