@@ -1,4 +1,5 @@
-import random 
+import random
+
 
 def generate_cookie_value():
     """Return une longueur de 128

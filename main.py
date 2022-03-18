@@ -1,5 +1,3 @@
-
-from difflib import ndiff
 from bottle import route, run, template, request, response, redirect, abort
 import sqlite3
 from helpers import generate_cookie_value, somme
