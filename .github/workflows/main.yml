@@ -53,7 +53,7 @@ jobs:
 
         - name: Virtual pytest creation
           run: |
-            pip install pytest
+            pip install pytest-cov
             python -m pytest --doctest-modules --ignore=main.py --cov
   deploy:
     needs: test
