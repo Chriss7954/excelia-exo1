@@ -56,4 +56,14 @@ jobs:
           run: |
             pip install pytest
             python -m pytest --doctest_modules --ignore=main.py --cov
-
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: action/checkout@v2
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_NAME}}
+          heroku_app_name: "exceliaexo1"
+          heroku_email: "christophe.guy7954@orange.fr"
