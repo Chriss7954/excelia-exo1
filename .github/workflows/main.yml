@@ -36,3 +36,24 @@ jobs:
           source .venv/bin/activate
           pip install r requirements.txt
           python3 ./main.py
+
+  test:
+    # This workflow contains a single job called "build"
+      # The type of runner that the job will run on
+      needs: build
+      runs-on: ubuntu-latest
+
+      # Steps represent a sequence of tasks that will be executed as part of the job
+      steps:
+        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+        - uses: actions/checkout@v2
+        - name: Virtual flake creation
+          run: |
+            pip install flake8
+            flake8 --exclude=".venv" --extend-ignore=E501
+
+        - name: Virtual pytest creation
+          run: |
+            pip install pytest
+            python -m pytest --doctest_modules --ignore=main.py --cov
+
