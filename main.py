@@ -1,6 +1,7 @@
 from bottle import route, run, template, request, response, redirect, abort
 import sqlite3
 from helpers import generate_cookie_value, somme
+import sys
 
 
 @route('/hello/<name>')
@@ -80,4 +81,4 @@ def addition(a="0", b="0"):
     return template('<b>Hello {{res}}</b>!', res=res)
 
 
-run(host='localhost', port=8080, reloader=True)
+run(host='0.0.0.0', port=sys.argv[1], reloader=True)
