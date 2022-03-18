@@ -2,9 +2,9 @@ from difflib import ndiff
 from bottle import route, run, template, request, response, redirect, abort
 import sqlite3
 import random
+from helpers import generate_cookie_value, somme
 
-def generate_cookie_value():
-    return str("".join(random.choice("0123456789ABCDEFabcdef@&!") for i in range(128)))
+
 
 @route('/hello/<name>')
 def index(name="Elsa"):
@@ -80,6 +80,20 @@ def user_info():
         abort(404, "Déso, t'es pas sur la liste ")
     return template("user_info", username=result[1],email=result[2])
 
+
+
+
+@route('/addition/<a>/<b>')
+def addition(a="0", b="0"):
+    
+    res = somme(a, b)
+    return template('<b>Hello {{res}}</b>!', res=res)
+    
+
+
+
+    
+    
 
 
 run(host='localhost', port=8080, reloader=True)
